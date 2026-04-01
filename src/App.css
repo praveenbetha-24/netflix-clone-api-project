@@ -1,0 +1,18 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  padding: 24px 4% 60px;
+  flex: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* When hero is shown, add top padding to clear it */
+.main.no-hero {
+  padding-top: calc(var(--nav-h) + 24px);
+}

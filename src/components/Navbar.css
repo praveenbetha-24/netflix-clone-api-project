@@ -1,0 +1,251 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4%;
+    transition: background var(--t), box-shadow var(--t);
+}
+
+.navbar.scrolled {
+    background: var(--nav-bg);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Logo */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    font-size: 1.6rem;
+}
+
+.logo-text {
+    font-size: 1.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #E50914, #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
+}
+
+/* Nav links */
+.nav-links {
+    display: flex;
+    gap: 22px;
+}
+
+.nav-links a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text2);
+    transition: color var(--t-fast);
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--red);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform var(--t-fast);
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: var(--text);
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+/* Icon btn */
+.icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text2);
+    font-size: 1.1rem;
+    transition: background var(--t-fast), color var(--t-fast);
+}
+
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+.icon-btn:hover {
+    background: var(--badge);
+    color: var(--text);
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 6px;
+}
+
+.hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: var(--t);
+}
+
+.hamburger.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Integrated Search */
+.nav-search {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 38px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    width: 38px;
+    /* Initial width is just the icon */
+}
+
+.nav-search.open {
+    background: rgba(0, 0, 0, 0.75);
+    border-color: #fff;
+    width: 280px;
+    padding-right: 10px;
+}
+
+[data-theme="light"] .nav-search.open {
+    background: #fff;
+    border-color: #333;
+}
+
+.search-btn {
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.search-input {
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 0.85rem;
+    padding: 0 5px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+[data-theme="light"] .search-input {
+    color: #111;
+}
+
+.nav-search.open .search-input {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.clear-search-inline {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 2px 6px;
+    transition: color 0.2s ease;
+}
+
+.clear-search-inline:hover {
+    color: #fff;
+}
+
+[data-theme="light"] .clear-search-inline:hover {
+    color: #000;
+}
+
+@media (max-width: 480px) {
+    .nav-search.open {
+        width: 180px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        backdrop-filter: blur(12px);
+        padding: 16px 4% 24px;
+        border-bottom: 1px solid var(--border);
+        gap: 0;
+        z-index: 998;
+    }
+
+    .nav-links.open a {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 1rem;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+}

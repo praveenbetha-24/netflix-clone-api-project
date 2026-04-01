@@ -1,0 +1,212 @@
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 560px;
+    max-height: 900px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 80px;
+}
+
+.hero-skeleton {
+    background: var(--card);
+}
+
+.hero-backdrop {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    animation: heroZoom 12s ease-in-out infinite alternate;
+    transition: background-image 0.8s ease;
+}
+
+@keyframes heroZoom {
+    from {
+        transform: scale(1.0);
+    }
+
+    to {
+        transform: scale(1.08);
+    }
+}
+
+.hero-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(10, 10, 10, 0.1) 0%,
+            rgba(10, 10, 10, 0) 20%,
+            rgba(10, 10, 10, 0.5) 55%,
+            rgba(10, 10, 10, 0.95) 100%);
+}
+
+[data-theme="light"] .hero-gradient {
+    background: linear-gradient(to bottom,
+            rgba(240, 240, 240, 0.1) 0%,
+            rgba(240, 240, 240, 0) 20%,
+            rgba(240, 240, 240, 0.6) 60%,
+            rgba(240, 240, 240, 1) 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 4%;
+    max-width: 680px;
+    animation: heroFadeIn 1s ease forwards;
+}
+
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(229, 9, 20, 0.12);
+    border: 1px solid rgba(229, 9, 20, 0.4);
+    color: var(--red);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(8px);
+}
+
+.hero-title {
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 14px;
+    text-shadow: 2px 4px 20px rgba(0, 0, 0, 0.7);
+    letter-spacing: -1px;
+}
+
+.hero-overview {
+    font-size: 0.97rem;
+    line-height: 1.7;
+    color: var(--text2);
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    max-width: 560px;
+    text-shadow: 1px 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.hero-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+}
+
+.hero-tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--badge);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(8px);
+}
+
+.hero-tag.rating {
+    color: var(--gold);
+    border-color: rgba(245, 197, 24, 0.3);
+    background: rgba(245, 197, 24, 0.1);
+}
+
+.hero-tag.year {
+    color: var(--green);
+}
+
+.hero-tag.r {
+    color: #ff6b6b;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-fav-hero {
+    background: rgba(109, 109, 110, 0.65);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 11px 24px;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    backdrop-filter: blur(8px);
+    transition: background var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+}
+
+.btn-fav-hero:hover {
+    background: rgba(109, 109, 110, 0.9);
+    transform: scale(1.04);
+}
+
+.btn-fav-hero.active {
+    background: rgba(229, 9, 20, 0.3);
+    border-color: rgba(229, 9, 20, 0.6);
+    color: #ff6b6b;
+}
+
+/* Dots */
+.hero-dots {
+    position: absolute;
+    bottom: 24px;
+    right: 4%;
+    z-index: 3;
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transition: background var(--t-fast), transform var(--t-fast);
+}
+
+.dot.active {
+    background: var(--red);
+    transform: scale(1.3);
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding-bottom: 60px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .btn-play,
+    .btn-fav-hero {
+        width: 180px;
+        text-align: center;
+        justify-content: center;
+    }
+}

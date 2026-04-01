@@ -1,0 +1,190 @@
+.controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 24px;
+    padding: 18px 22px;
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.controls-left {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.result-count {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-weight: 500;
+}
+
+.controls-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.filter-group select {
+    background: var(--surface);
+    color: var(--text);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 7px 30px 7px 10px;
+    font-size: 0.84rem;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: border-color var(--t-fast);
+    min-width: 130px;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 7px center;
+    background-size: 14px;
+}
+
+.filter-group select:focus {
+    border-color: var(--red);
+}
+
+/* View toggle */
+.view-toggle {
+    display: flex;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.view-btn {
+    width: 34px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    background: var(--surface);
+    transition: background var(--t-fast), color var(--t-fast);
+}
+
+.view-btn svg {
+    width: 15px;
+    height: 15px;
+}
+
+.view-btn.active {
+    background: var(--red);
+    color: #fff;
+}
+
+.view-btn:hover:not(.active) {
+    background: var(--surface2);
+    color: var(--text);
+}
+
+@media (max-width: 768px) {
+    .controls-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .controls-right {
+        width: 100%;
+    }
+}
+
+/* Skeleton */
+.skeleton-card {
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    overflow: hidden;
+    aspect-ratio: 2/3;
+    position: relative;
+}
+
+.skeleton-card.skeleton-list {
+    aspect-ratio: unset;
+    height: 90px;
+    display: flex;
+    border-radius: var(--radius);
+}
+
+.skeleton-poster {
+    flex-shrink: 0;
+    aspect-ratio: 2/3;
+    background: var(--surface2);
+}
+
+.skeleton-list .skeleton-poster {
+    width: 60px;
+    height: 90px;
+    aspect-ratio: unset;
+}
+
+.skeleton-body {
+    padding: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+}
+
+.skeleton-line {
+    height: 12px;
+    background: var(--surface2);
+    border-radius: 6px;
+}
+
+.skeleton-line.w80 {
+    width: 80%;
+}
+
+.skeleton-line.w50 {
+    width: 50%;
+}
+
+.skeleton-card::after,
+.skeleton-poster::after,
+.skeleton-line::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(100%);
+    }
+}
