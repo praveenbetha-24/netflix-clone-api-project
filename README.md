@@ -33,6 +33,5 @@ To demonstrate:
 
 * HTML
 * CSS
-* JavaScript
-
+* JavaScript(React.JS)
 
